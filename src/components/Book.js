@@ -2,9 +2,10 @@ import React from "react";
 
 
 
-class Book extends React.Component {
-  render() {
-    const { book , onUpdate} = this.props;
+function Book(props) {
+  
+    const { book , onUpdate} =props;
+    console.log(book);
     const options = [
       { value: "currentlyReading", text: "Currently Reading" },
       { value: "wantToRead", text: "Want to Read" },
@@ -19,11 +20,11 @@ class Book extends React.Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url(${book.imageLinks.thumbnail})`,
+              backgroundImage: `url(${book.imageLinks?.thumbnail})`,
             }}
           />
           <div className="book-shelf-changer">
-            <select defaultValue = {book.shelf} onChange={(e) => onUpdate(book, e.target.value)}
+            <select defaultValue = {book.shelf?book.shelf:"move"} onChange={(e) => onUpdate(book, e.target.value)}
 >
               <option value="move" disabled>
                 Move to...
@@ -42,11 +43,11 @@ class Book extends React.Component {
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">
-          {book.authors.join(" - ")}
+          {book.authors && book.authors.join(" - ")}
         </div>
       </div>
     );
-  }
+  
 }
 
 export default Book;

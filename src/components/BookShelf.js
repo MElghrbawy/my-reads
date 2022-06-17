@@ -1,9 +1,9 @@
 import React from "react";
 import Book from "./Book";
 
-class BookShelf extends React.Component {
-  render() {
-    const { books, title, shelf, onUpdate } = this.props
+function BookShelf(props) {
+  
+    const { books, title, shelf, onUpdate } = props
 
     return (
       <div className="bookshelf">
@@ -21,6 +21,5 @@ class BookShelf extends React.Component {
       </div>
     );
   }
-}
 
 export default BookShelf;

@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import BookShelf from "../components/BookShelf";
 
-class MyReads extends React.Component {
+function MyReads(props) {
 
-    render() {
-      const { books, onUpdate } = this.props
+    
+      const { books, onUpdate } = props
         return (
             <div className="list-books">
             <div className="list-books-title">
@@ -30,7 +30,7 @@ class MyReads extends React.Component {
 
           
         )
-    }
+    
 }
 
 
