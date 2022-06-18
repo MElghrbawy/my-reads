@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Book from "../components/Book";
 import * as BooksAPI from "../utils/BooksAPI";
@@ -7,30 +7,21 @@ function SearchBooks(props) {
   const [query, setQuery] = useState("");
   const [searchBooks, setSearchBooks] = useState([]);
 
-  // userEffect(()=>{
-  //   try {BooksAPI.search(query).then((books) => console.log(books));
-  //   } catch (err) {
-  //       console.log(err);
-  //   }
-  // },[])
-
-  const handleSearch = () => {
-    try {
-      query &&
-        BooksAPI.search(query).then((books) => {
+  useEffect(() => {
+    try {BooksAPI.search(query).then((books) => {
           console.log(books);
           Array.isArray(books) ? setSearchBooks(books) : setSearchBooks([]);
         });
     } catch (err) {
       console.log(err);
     }
-  };
+
+
+  },[query])
 
   const updateQuery = (inputQuery) => {
     setQuery(inputQuery.trim());
-    if(query) {
-      handleSearch();
-    }
+   
   };
 
   const { books, onUpdate } = props;

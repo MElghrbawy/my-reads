@@ -24,7 +24,7 @@ function Book(props) {
             }}
           />
           <div className="book-shelf-changer">
-            <select defaultValue = {book.shelf?book.shelf:"move"} onChange={(e) => onUpdate(book, e.target.value)}
+            <select defaultValue = {book.shelf?book.shelf:"none"} onChange={(e) => onUpdate(book, e.target.value)}
 >
               <option value="move" disabled>
                 Move to...

@@ -19,7 +19,7 @@ function BooksApp() {
  
   useEffect(() => {
    getAllBooks()
-  });
+  },[]);
 
   const updateShelf = (book, shelf) => {
      BooksAPI.update(book, shelf).then(() => {
